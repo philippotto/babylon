@@ -105,26 +105,42 @@ pp.flowParseDeclareFunction = function (node) {
   return this.finishNode(node, "DeclareFunction");
 };
 
-pp.flowParseDeclare = function (node) {
-  if (this.match(tt._class)) {
+let flowParseDeclareOrType = function(node, allowModule, allowType) {
+  if (this.isContextual("module")) {
+    if (!allowModule) {
+      this.unexpected();
+    } else if (this.lookahead().type === tt.dot) {
+      return this.flowParseDeclareModuleExports(node);
+    } else {
+      return this.flowParseDeclareModule(node);
+    }
+  } else if (this.match(tt._export)) {
+    if (!allowModule) {
+      this.unexpected();
+    } else if (this.lookahead().type === tt._default) {
+      return this.flowParseDeclareExportDefault(node);
+    } else {
+      return this.flowParseDeclareExport(node);
+    }
+  } else if (this.match(tt._class)) {
     return this.flowParseDeclareClass(node);
   } else if (this.match(tt._function)) {
     return this.flowParseDeclareFunction(node);
   } else if (this.match(tt._var)) {
     return this.flowParseDeclareVariable(node);
-  } else if (this.isContextual("module")) {
-    if (this.lookahead().type === tt.dot) {
-      return this.flowParseDeclareModuleExports(node);
-    } else {
-      return this.flowParseDeclareModule(node);
-    }
   } else if (this.isContextual("type")) {
     return this.flowParseDeclareTypeAlias(node);
   } else if (this.isContextual("interface")) {
     return this.flowParseDeclareInterface(node);
+  } else if (allowType) {
+    return this.flowParseType();
   } else {
     this.unexpected();
   }
+};
+
+pp.flowParseDeclare = function (node) {
+  return flowParseDeclareOrType.call(this, node, true, false);
 };
 
 pp.flowParseDeclareVariable = function (node) {
@@ -168,6 +184,23 @@ pp.flowParseDeclareModule = function (node) {
 
   this.finishNode(bodyNode, "BlockStatement");
   return this.finishNode(node, "DeclareModule");
+};
+
+pp.flowParseDeclareExport = function (node) {
+  this.expect(tt._export);
+  const declarationNode = this.startNode();
+  node.declaration = flowParseDeclareOrType.call(this, declarationNode, false, false);
+  this.semicolon();
+  return this.finishNode(node, "DeclareExport");
+};
+
+pp.flowParseDeclareExportDefault = function (node) {
+  this.expect(tt._export);
+  this.expect(tt._default);
+  const declarationNode = this.startNode();
+  node.declaration = flowParseDeclareOrType.call(this, declarationNode, false, true);
+  this.semicolon();
+  return this.finishNode(node, "DeclareExportDefault");
 };
 
 pp.flowParseDeclareModuleExports = function (node) {

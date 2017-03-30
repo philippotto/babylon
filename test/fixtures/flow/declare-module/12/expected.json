@@ -1,0 +1,179 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 70,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 1,
+      "column": 70
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 70,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 1,
+        "column": 70
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "DeclareModule",
+        "start": 0,
+        "end": 70,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 70
+          }
+        },
+        "id": {
+          "type": "Identifier",
+          "start": 15,
+          "end": 16,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 15
+            },
+            "end": {
+              "line": 1,
+              "column": 16
+            },
+            "identifierName": "A"
+          },
+          "name": "A"
+        },
+        "body": {
+          "type": "BlockStatement",
+          "start": 17,
+          "end": 70,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 17
+            },
+            "end": {
+              "line": 1,
+              "column": 70
+            }
+          },
+          "body": [
+            {
+              "type": "DeclareExportDefault",
+              "start": 19,
+              "end": 68,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 19
+                },
+                "end": {
+                  "line": 1,
+                  "column": 68
+                }
+              },
+              "declaration": {
+                "type": "DeclareFunction",
+                "start": 42,
+                "end": 68,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 42
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 68
+                  }
+                },
+                "id": {
+                  "type": "Identifier",
+                  "start": 51,
+                  "end": 67,
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 51
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 67
+                    },
+                    "identifierName": "method"
+                  },
+                  "name": "method",
+                  "typeAnnotation": {
+                    "type": "TypeAnnotation",
+                    "start": 57,
+                    "end": 67,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 57
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 67
+                      }
+                    },
+                    "typeAnnotation": {
+                      "type": "FunctionTypeAnnotation",
+                      "start": 57,
+                      "end": 67,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 57
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 67
+                        }
+                      },
+                      "typeParameters": null,
+                      "params": [],
+                      "rest": null,
+                      "returnType": {
+                        "type": "NumberTypeAnnotation",
+                        "start": 61,
+                        "end": 67,
+                        "loc": {
+                          "start": {
+                            "line": 1,
+                            "column": 61
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 67
+                          }
+                        }
+                      }
+                    },
+                    "predicate": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "directives": []
+  }
+}

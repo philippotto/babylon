@@ -1,0 +1,185 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 62,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 1,
+      "column": 62
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 62,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 1,
+        "column": 62
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "DeclareModule",
+        "start": 0,
+        "end": 62,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 62
+          }
+        },
+        "id": {
+          "type": "Identifier",
+          "start": 15,
+          "end": 16,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 15
+            },
+            "end": {
+              "line": 1,
+              "column": 16
+            },
+            "identifierName": "A"
+          },
+          "name": "A"
+        },
+        "body": {
+          "type": "BlockStatement",
+          "start": 17,
+          "end": 62,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 17
+            },
+            "end": {
+              "line": 1,
+              "column": 62
+            }
+          },
+          "body": [
+            {
+              "type": "DeclareExportDefault",
+              "start": 19,
+              "end": 60,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 19
+                },
+                "end": {
+                  "line": 1,
+                  "column": 60
+                }
+              },
+              "declaration": {
+                "type": "ObjectTypeAnnotation",
+                "start": 42,
+                "end": 60,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 42
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 60
+                  }
+                },
+                "callProperties": [],
+                "properties": [
+                  {
+                    "type": "ObjectTypeProperty",
+                    "start": 44,
+                    "end": 58,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 44
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 58
+                      }
+                    },
+                    "value": {
+                      "type": "FunctionTypeAnnotation",
+                      "start": 44,
+                      "end": 57,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 44
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 57
+                        }
+                      },
+                      "params": [],
+                      "rest": null,
+                      "typeParameters": null,
+                      "returnType": {
+                        "type": "NumberTypeAnnotation",
+                        "start": 51,
+                        "end": 57,
+                        "loc": {
+                          "start": {
+                            "line": 1,
+                            "column": 51
+                          },
+                          "end": {
+                            "line": 1,
+                            "column": 57
+                          }
+                        }
+                      }
+                    },
+                    "static": false,
+                    "key": {
+                      "type": "Identifier",
+                      "start": 44,
+                      "end": 47,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 44
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 47
+                        },
+                        "identifierName": "foo"
+                      },
+                      "name": "foo"
+                    },
+                    "optional": false
+                  }
+                ],
+                "indexers": [],
+                "exact": false
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "directives": []
+  }
+}
