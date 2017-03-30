@@ -105,7 +105,7 @@ pp.flowParseDeclareFunction = function (node) {
   return this.finishNode(node, "DeclareFunction");
 };
 
-let flowParseDeclareOrType = function(node, allowModule, allowType) {
+function flowParseDeclareOrType(node, allowModule, allowType) {
   if (this.isContextual("module")) {
     if (!allowModule) {
       this.unexpected();
@@ -137,7 +137,7 @@ let flowParseDeclareOrType = function(node, allowModule, allowType) {
   } else {
     this.unexpected();
   }
-};
+}
 
 pp.flowParseDeclare = function (node) {
   return flowParseDeclareOrType.call(this, node, true, false);
