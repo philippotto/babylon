@@ -191,7 +191,8 @@ pp.flowParseDeclareExport = function (node) {
   const declarationNode = this.startNode();
   node.declaration = flowParseDeclareOrType.call(this, declarationNode, false, false);
   this.semicolon();
-  return this.finishNode(node, "DeclareExport");
+  node.default = false;
+  return this.finishNode(node, "DeclareExportDeclaration");
 };
 
 pp.flowParseDeclareExportDefault = function (node) {
@@ -200,7 +201,8 @@ pp.flowParseDeclareExportDefault = function (node) {
   const declarationNode = this.startNode();
   node.declaration = flowParseDeclareOrType.call(this, declarationNode, false, true);
   this.semicolon();
-  return this.finishNode(node, "DeclareExportDefault");
+  node.default = true;
+  return this.finishNode(node, "DeclareExportDeclaration");
 };
 
 pp.flowParseDeclareModuleExports = function (node) {

@@ -75,7 +75,7 @@
           },
           "body": [
             {
-              "type": "DeclareExportDefault",
+              "type": "DeclareExportDeclaration",
               "start": 19,
               "end": 68,
               "loc": {
@@ -168,7 +168,8 @@
                     "predicate": null
                   }
                 }
-              }
+              },
+              "default": true
             }
           ]
         }
