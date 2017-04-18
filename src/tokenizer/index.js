@@ -425,7 +425,15 @@ export default class Tokenizer {
           return this.finishToken(tt.colon);
         }
 
-      case 63: ++this.state.pos; return this.finishToken(tt.question);
+      case 63:
+        var next = this.input.charCodeAt(this.state.pos + 1);
+        if (next === 46) {
+          this.state.pos += 2;
+          return this.finishToken(tt.questionDot);
+        } else {
+          ++this.state.pos;
+          return this.finishToken(tt.question);
+        }
       case 64: ++this.state.pos; return this.finishToken(tt.at);
 
       case 96: // '`'

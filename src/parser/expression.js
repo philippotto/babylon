@@ -290,6 +290,12 @@ pp.parseSubscripts = function (base, startPos, startLoc, noCalls) {
       node.property = this.parseIdentifier(true);
       node.computed = false;
       base = this.finishNode(node, "MemberExpression");
+    } else if (this.eat(tt.questionDot)) {
+      const node = this.startNodeAt(startPos, startLoc);
+      node.object = base;
+      node.property = this.parseIdentifier(true);
+      node.computed = false;
+      base = this.finishNode(node, "ConditionalMemberExpression");
     } else if (this.eat(tt.bracketL)) {
       const node = this.startNodeAt(startPos, startLoc);
       node.object = base;
@@ -388,7 +394,7 @@ pp.parseExprAtom = function (refShorthandDefaultPos) {
 
       node = this.startNode();
       this.next();
-      if (!this.match(tt.parenL) && !this.match(tt.bracketL) && !this.match(tt.dot)) {
+      if (!this.match(tt.parenL) && !this.match(tt.bracketL) && !this.match(tt.dot) && !this.match(tt.questionDot)) {
         this.unexpected();
       }
       if (this.match(tt.parenL) && this.state.inMethod !== "constructor" && !this.options.allowSuperOutsideMethod) {
@@ -513,7 +519,7 @@ pp.parseExprAtom = function (refShorthandDefaultPos) {
       this.next();
       node.object = null;
       const callee = node.callee = this.parseNoCallExpr();
-      if (callee.type === "MemberExpression") {
+      if (callee.type === "MemberExpression" || callee.type === "ConditionalMemberExpression") {
         return this.finishNode(node, "BindExpression");
       } else {
         this.raise(callee.start, "Binding should be performed on object property.");

@@ -53,6 +53,7 @@ pp.toAssignable = function (node, isBinding, contextDescription) {
         break;
 
       case "MemberExpression":
+      case "ConditionalMemberExpression":
         if (!isBinding) break;
 
       default: {
@@ -77,7 +78,7 @@ pp.toAssignableList = function (exprList, isBinding, contextDescription) {
       last.type = "RestElement";
       const arg = last.argument;
       this.toAssignable(arg, isBinding, contextDescription);
-      if (arg.type !== "Identifier" && arg.type !== "MemberExpression" && arg.type !== "ArrayPattern") {
+      if (arg.type !== "Identifier" && arg.type !== "MemberExpression" && arg.type !== "ConditionalMemberExpression" && arg.type !== "ArrayPattern") {
         this.unexpected(arg.start);
       }
       --end;
@@ -225,6 +226,7 @@ pp.checkLVal = function (expr, isBinding, checkClashes, contextDescription) {
       break;
 
     case "MemberExpression":
+    case "ConditionalMemberExpression":
       if (isBinding) this.raise(expr.start, (isBinding ? "Binding" : "Assigning to") + " member expression");
       break;
 
