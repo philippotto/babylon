@@ -7,7 +7,7 @@ import "./parser/node";
 import "./parser/location";
 import "./parser/comments";
 
-import { types as tokTypes } from "./tokenizer/types";
+import { types as tokTypes, addType, addKeyword, TokenType, KeywordTokenType, BinopTokenType } from "./tokenizer/types";
 import "./tokenizer";
 import "./tokenizer/context";
 
@@ -30,5 +30,7 @@ export function parseExpression(input, options) {
   return parser.getExpression();
 }
 
-
+export const ParserAPI = {
+  addType, addKeyword, TokenType, KeywordTokenType, BinopTokenType,
+};
 export { tokTypes };

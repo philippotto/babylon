@@ -1,12 +1,16 @@
 var test = require("ava");
 var getFixtures = require("babel-helper-fixtures").multiple;
 
+var layerPlugin = require("../../../layer-plugin/lib").layersPlugin;
+
 exports.runFixtureTests = function runFixtureTests(fixturesPath, parseFunction) {
   var fixtures = getFixtures(fixturesPath);
 
   Object.keys(fixtures).forEach(function (name) {
     fixtures[name].forEach(function (testSuite) {
       testSuite.tests.forEach(function (task) {
+        task.options.pluginModules = [layerPlugin];
+
         var testFn = task.disabled ? test.skip : task.options.only ? test.only : test;
 
         testFn(name + "/" + testSuite.title + "/" + task.title, function () {

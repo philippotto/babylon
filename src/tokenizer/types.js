@@ -39,7 +39,7 @@ export class TokenType {
   }
 }
 
-class KeywordTokenType extends TokenType {
+export class KeywordTokenType extends TokenType {
   constructor(name, options = {}) {
     options.keyword = name;
 
@@ -160,3 +160,11 @@ export const keywords = {
 Object.keys(keywords).forEach((name) => {
   types["_" + name] = keywords[name];
 });
+
+export function addType(name, tokenType) {
+  types[name] = tokenType;
+}
+
+export function addKeyword(name, keywordTokenType) {
+  keywords[name] = types["_" + name] = keywordTokenType;
+}

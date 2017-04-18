@@ -12,7 +12,7 @@ export default class Parser extends Tokenizer {
     this.options = options;
     this.inModule = this.options.sourceType === "module";
     this.input = input;
-    this.plugins = this.loadPlugins(this.options.plugins);
+    this.plugins = this.loadPlugins(this.options.plugins, this.options.pluginModules);
     this.filename = options.sourceFilename;
 
     // If enabled, skip leading hashbang line.
@@ -37,7 +37,15 @@ export default class Parser extends Tokenizer {
     this[name] = f(this[name]);
   }
 
-  loadPlugins(pluginList: Array<string>): { [key: string]: boolean } {
+  loadPluginModule(pluginMap, pluginModule) {
+    const name = pluginModule.name;
+    if (!pluginMap[name]) {
+      pluginMap[name] = true;
+      pluginModule.setup(this);
+    }
+  };
+
+  loadPlugins(pluginList: Array<string>, pluginModules: mixed): { [key: string]: boolean } {
     const pluginMap = {};
 
     if (pluginList.indexOf("flow") >= 0) {
@@ -59,6 +67,10 @@ export default class Parser extends Tokenizer {
         const plugin = plugins[name];
         if (plugin) plugin(this);
       }
+    }
+
+    for (const pluginModule of pluginModules) {
+      this.loadPluginModule(pluginMap, pluginModule);
     }
 
     return pluginMap;

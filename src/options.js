@@ -9,6 +9,7 @@ export const defaultOptions: {
   allowImportExportEverywhere: boolean,
   allowSuperOutsideMethod: boolean,
   plugins: Array<string>,
+  pluginModules: Array<string>,
   strictMode: any,
   ranges: boolean,
 } = {
@@ -29,6 +30,7 @@ export const defaultOptions: {
   allowSuperOutsideMethod: false,
   // An array of plugins to enable
   plugins: [],
+  pluginModules: [],
   // TODO
   strictMode: null,
   // Nodes have their start and end characters offsets recorded in
